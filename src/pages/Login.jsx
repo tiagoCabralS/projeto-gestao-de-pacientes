@@ -1,0 +1,68 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Login() {
+    const navigate = useNavigate()
+  const [username, setUsername] = useState("");
+  const [senha, setSenha] = useState("");
+
+  async function handleSubmit(e){
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:3000/usuario/login", {
+        username,
+        senha,
+      });
+
+      localStorage.setItem("token", JSON.stringify(response.data.token))
+      navigate("/")
+    } catch (error) {
+      console.log(error);
+      alert("Acesso não autorizado! Username ou senha incorretos.")
+    }
+  };
+
+  return (
+    <div className="w-screen h-screen bg-olive-900 flex justify-center items-center">
+      <div className="bg-olive-400 h-fit p-6 rounded-md space-y-2">
+        <div className="flex justify-center">
+          <h1 className="text-2xl">Login</h1>
+        </div>
+        <div className="">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+            <label htmlFor="username">Username:</label>
+            <input
+              className="bg-white rounded-md p-2"
+              type="text"
+              id="username"
+              name="username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <label htmlFor="senha">Senha:</label>
+            <input
+              className="bg-white rounded-md p-2"
+              type="password"
+              id="senha"
+              name="senha"
+              onChange={(e) => {
+                setSenha(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              className="bg-olive-700 p-1 rounded-md uppercase"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
