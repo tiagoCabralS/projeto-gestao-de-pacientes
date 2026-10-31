@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
+import Formulario from "../components/Formulario";
 
 function Login() {
     const navigate = useNavigate()
@@ -34,7 +35,7 @@ function Login() {
           <h1 className="text-2xl">Login</h1>
         </div>
         <div className="">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <Formulario onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
             <input
               className="bg-white rounded-md p-2"
@@ -61,7 +62,7 @@ function Login() {
             >
               Login
             </button>
-          </form>
+          </Formulario>
         </div>
       </Conteudo>
     </Background>
