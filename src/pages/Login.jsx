@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Background from "../components/Background";
+
 function Login() {
     const navigate = useNavigate()
   const [username, setUsername] = useState("");
@@ -25,7 +27,7 @@ function Login() {
   };
 
   return (
-    <div className="w-screen h-screen bg-olive-900 flex justify-center items-center">
+    <Background>
       <div className="bg-olive-400 h-fit p-6 rounded-md space-y-2">
         <div className="flex justify-center">
           <h1 className="text-2xl">Login</h1>
@@ -61,7 +63,7 @@ function Login() {
           </form>
         </div>
       </div>
-    </div>
+    </Background>
   );
 }
 
