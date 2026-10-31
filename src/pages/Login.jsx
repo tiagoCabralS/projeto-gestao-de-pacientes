@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Background from "../components/Background";
+import Conteudo from "../components/Conteudo";
 
 function Login() {
     const navigate = useNavigate()
@@ -28,7 +29,7 @@ function Login() {
 
   return (
     <Background>
-      <div className="bg-olive-400 h-fit p-6 rounded-md space-y-2">
+      <Conteudo>
         <div className="flex justify-center">
           <h1 className="text-2xl">Login</h1>
         </div>
@@ -62,7 +63,7 @@ function Login() {
             </button>
           </form>
         </div>
-      </div>
+      </Conteudo>
     </Background>
   );
 }
