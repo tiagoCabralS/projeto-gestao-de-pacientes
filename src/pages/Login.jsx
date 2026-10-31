@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import Formulario from "../components/Formulario";
+import Botao from "../components/Botao";
 
 function Login() {
     const navigate = useNavigate()
@@ -56,12 +57,9 @@ function Login() {
                 setSenha(e.target.value);
               }}
             />
-            <button
-              type="submit"
-              className="bg-olive-700 p-1 rounded-md uppercase"
-            >
+            <Botao type="submit">
               Login
-            </button>
+            </Botao>
           </Formulario>
         </div>
       </Conteudo>
