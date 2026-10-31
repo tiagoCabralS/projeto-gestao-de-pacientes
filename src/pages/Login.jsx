@@ -6,6 +6,7 @@ import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import Formulario from "../components/Formulario";
 import Botao from "../components/Botao";
+import Input from "../components/Input";
 
 function Login() {
     const navigate = useNavigate()
@@ -38,8 +39,7 @@ function Login() {
         <div className="">
           <Formulario onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
-            <input
-              className="bg-white rounded-md p-2"
+            <Input
               type="text"
               id="username"
               name="username"
@@ -48,8 +48,7 @@ function Login() {
               }}
             />
             <label htmlFor="senha">Senha:</label>
-            <input
-              className="bg-white rounded-md p-2"
+            <Input
               type="password"
               id="senha"
               name="senha"
