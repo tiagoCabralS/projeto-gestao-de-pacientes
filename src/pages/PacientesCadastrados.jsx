@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
+import Li from "../components/Li";
 
 function PacientesCadastrados() {
   const [pacientesCadastrados, setPacientesCadastrados] = useState([]);
@@ -16,27 +17,27 @@ function PacientesCadastrados() {
     <Background>
       <Conteudo>
         <ul className="grid grid-cols-1 space-y-2">
-          <li className="flex justify-between space-x-3">
-            <strong className="bg-olive-500 w-1/12 px-6 rounded-md">ID</strong>
-            <strong className="w-full bg-olive-500 px-6 rounded-md">Nome</strong>
-            <strong className="w-1/4 bg-olive-500 px-6 rounded-md">Telefone</strong>
-            <strong className="w-1/12 bg-olive-500 px-6 rounded-md"></strong>
-          </li>
+          <Li>
+            <strong className="bg-olive-500 px-6 rounded-md w-1/12">ID</strong>
+            <strong className="bg-olive-500 px-6 rounded-md w-full">Nome</strong>
+            <strong className="bg-olive-500 px-6 rounded-md w-1/4">Telefone</strong>
+            <strong className="bg-olive-500 px-6 rounded-md w-1/12"></strong>
+          </Li>
           {pacientesCadastrados.map((paciente) => (
-            <li key={paciente.id} className="flex justify-between space-x-3">
-              <button className="bg-olive-500 w-1/12 px-6 rounded-md">
+            <Li key={paciente.id}>
+              <button className="bg-olive-500 px-6 rounded-md w-1/12">
                 {paciente.id}
               </button>
-              <button className="w-full bg-olive-500 px-6 rounded-md">
+              <button className="bg-olive-500 px-6 rounded-md w-full text-left">
                 {paciente.nome}
               </button>
-              <button className="w-1/4 bg-olive-500 px-6 rounded-md">
+              <button className="bg-olive-500 px-6 rounded-md font-bold w-1/4 text-left">
                 {paciente.telefone}
               </button>
-              <button className="w-1/12 bg-olive-500 px-6 rounded-md">
+              <button className="bg-olive-500 px-6 rounded-md font-bold w-1/12">
                 {'>'}
               </button>
-            </li>
+            </Li>
           ))}
         </ul>
       </Conteudo>
