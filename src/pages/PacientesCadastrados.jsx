@@ -19,9 +19,9 @@ function PacientesCadastrados() {
       <Conteudo>
         <ul className="grid grid-cols-1 space-y-2">
           <Li>
-            <PacientesBotao className=" w-1/12">ID</PacientesBotao>
-            <PacientesBotao className=" w-full">Nome</PacientesBotao>
-            <PacientesBotao className=" w-1/4">Telefone</PacientesBotao>
+            <PacientesBotao className=" w-1/12 font-bold">ID</PacientesBotao>
+            <PacientesBotao className=" w-full text-left font-bold">Nome</PacientesBotao>
+            <PacientesBotao className=" w-1/4 font-bold">Telefone</PacientesBotao>
             <PacientesBotao className=" w-1/12"></PacientesBotao>
           </Li>
           {pacientesCadastrados.map((paciente) => (
