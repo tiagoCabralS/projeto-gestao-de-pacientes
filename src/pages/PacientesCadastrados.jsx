@@ -20,6 +20,7 @@ function PacientesCadastrados() {
             <strong className="bg-olive-500 w-1/12 px-6 rounded-md">ID</strong>
             <strong className="w-full bg-olive-500 px-6 rounded-md">Nome</strong>
             <strong className="w-1/4 bg-olive-500 px-6 rounded-md">Telefone</strong>
+            <strong className="w-1/12 bg-olive-500 px-6 rounded-md"></strong>
           </li>
           {pacientesCadastrados.map((paciente) => (
             <li key={paciente.id} className="flex justify-between space-x-3">
