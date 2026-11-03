@@ -4,9 +4,17 @@ import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import Li from "../components/Li";
 import PacientesBotao from "../components/PacientesBotao";
+import { useNavigate } from "react-router-dom";
 
 function PacientesCadastrados() {
+  const navigate = useNavigate()
   const [pacientesCadastrados, setPacientesCadastrados] = useState([]);
+
+  function verDetalhes(id){
+    const query = new URLSearchParams()
+    query.set("id", id)
+    navigate(`/pacientes/detalhes?${query.toString()}`)
+  }
 
   useEffect(() => {
     axios.get("http://localhost:3000/paciente/all").then(({ data }) => {
@@ -35,7 +43,9 @@ function PacientesCadastrados() {
               <PacientesBotao className=" font-bold w-1/4 text-left">
                 {paciente.telefone}
               </PacientesBotao>
-              <PacientesBotao className=" font-bold w-1/12">
+              <PacientesBotao 
+              onClick={() => {verDetalhes(paciente.id)}} 
+              className=" font-bold w-1/12">
                 {'>'}
               </PacientesBotao>
             </Li>
