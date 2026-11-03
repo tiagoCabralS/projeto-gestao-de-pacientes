@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import Li from "../components/Li";
+import PacientesBotao from "../components/PacientesBotao";
 
 function PacientesCadastrados() {
   const [pacientesCadastrados, setPacientesCadastrados] = useState([]);
@@ -18,25 +19,25 @@ function PacientesCadastrados() {
       <Conteudo>
         <ul className="grid grid-cols-1 space-y-2">
           <Li>
-            <strong className="bg-olive-500 px-6 rounded-md w-1/12">ID</strong>
-            <strong className="bg-olive-500 px-6 rounded-md w-full">Nome</strong>
-            <strong className="bg-olive-500 px-6 rounded-md w-1/4">Telefone</strong>
-            <strong className="bg-olive-500 px-6 rounded-md w-1/12"></strong>
+            <PacientesBotao className=" w-1/12">ID</PacientesBotao>
+            <PacientesBotao className=" w-full">Nome</PacientesBotao>
+            <PacientesBotao className=" w-1/4">Telefone</PacientesBotao>
+            <PacientesBotao className=" w-1/12"></PacientesBotao>
           </Li>
           {pacientesCadastrados.map((paciente) => (
             <Li key={paciente.id}>
-              <button className="bg-olive-500 px-6 rounded-md w-1/12">
+              <PacientesBotao className=" w-1/12">
                 {paciente.id}
-              </button>
-              <button className="bg-olive-500 px-6 rounded-md w-full text-left">
+              </PacientesBotao>
+              <PacientesBotao className=" w-full text-left">
                 {paciente.nome}
-              </button>
-              <button className="bg-olive-500 px-6 rounded-md font-bold w-1/4 text-left">
+              </PacientesBotao>
+              <PacientesBotao className=" font-bold w-1/4 text-left">
                 {paciente.telefone}
-              </button>
-              <button className="bg-olive-500 px-6 rounded-md font-bold w-1/12">
+              </PacientesBotao>
+              <PacientesBotao className=" font-bold w-1/12">
                 {'>'}
-              </button>
+              </PacientesBotao>
             </Li>
           ))}
         </ul>
