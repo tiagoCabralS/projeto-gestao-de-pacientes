@@ -3,6 +3,7 @@ import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import axios from "axios";
 import { useState } from "react";
+import Botao from "../components/Botao"
 
 function DetalhesPaciente(){
     const navigate = useNavigate()
@@ -17,7 +18,7 @@ function DetalhesPaciente(){
     return (
         <Background>
             <Conteudo>
-                {paciente}
+                <Botao onClick={() => navigate(-1)}>Voltar</Botao>
             </Conteudo>
         </Background>
     )
