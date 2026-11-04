@@ -66,11 +66,11 @@ function DetalhesPaciente() {
           </tr>
           <tr>
             <TdLabel>Cidade</TdLabel>
-            <td>{paciente.endereco.cidade}</td>
+            <TdInfo>{paciente.endereco.cidade}</TdInfo>
             <TdLabel>Estado</TdLabel>
-            <td>{paciente.endereco.estado}</td>
+            <TdInfo>{paciente.endereco.estado}</TdInfo>
             <TdLabel>Bairro</TdLabel>
-            <td>{paciente.endereco.bairro}</td>
+            <TdInfo>{paciente.endereco.bairro}</TdInfo>
           </tr>
         </table>
         <div className="flex justify-between space-x-2">
