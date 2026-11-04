@@ -2,6 +2,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import TdLabel from "../components/TdLabel";
+import TdInfo from "../components/TdInfo";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
@@ -41,27 +42,27 @@ function DetalhesPaciente() {
         <table className="w-full">
           <tr>
             <TdLabel>CPF</TdLabel>
-            <td>{paciente.cpf}</td>
+            <TdInfo>{paciente.cpf}</TdInfo>
             <TdLabel>Nome</TdLabel>
-            <td>{paciente.nome}</td>
+            <TdInfo>{paciente.nome}</TdInfo>
             <TdLabel>Data Nascimento</TdLabel>
-            <td>{paciente.data_nascimento}</td>
+            <TdInfo>{paciente.data_nascimento}</TdInfo>
           </tr>
           <tr>
             <TdLabel>Gênero</TdLabel>
-            <td>{paciente.genero}</td>
+            <TdInfo>{paciente.genero}</TdInfo>
             <TdLabel>E-mail</TdLabel>
-            <td>{paciente.email}</td>
+            <TdInfo>{paciente.email}</TdInfo>
             <TdLabel>Telefone</TdLabel>
-            <td>{paciente.telefone}</td>
+            <TdInfo>{paciente.telefone}</TdInfo>
           </tr>
           <tr>
             <TdLabel>CEP</TdLabel>
-            <td>{paciente.endereco.cep}</td>
+            <TdInfo>{paciente.endereco.cep}</TdInfo>
             <TdLabel>Rua</TdLabel>
-            <td>{paciente.endereco.rua}</td>
+            <TdInfo>{paciente.endereco.rua}</TdInfo>
             <TdLabel>N°</TdLabel>
-            <td>{paciente.endereco.numero}</td>
+            <TdInfo>{paciente.endereco.numero}</TdInfo>
           </tr>
           <tr>
             <TdLabel>Cidade</TdLabel>
