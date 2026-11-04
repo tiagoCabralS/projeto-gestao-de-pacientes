@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
+import TdLabel from "../components/TdLabel";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
@@ -39,35 +40,35 @@ function DetalhesPaciente() {
         </h1>
         <table className="w-full">
           <tr>
-            <td className="font-bold">CPF</td>
+            <TdLabel>CPF</TdLabel>
             <td>{paciente.cpf}</td>
-            <td className="font-bold">Nome</td>
+            <TdLabel>Nome</TdLabel>
             <td>{paciente.nome}</td>
-            <td className="font-bold">Data Nascimento</td>
+            <TdLabel>Data Nascimento</TdLabel>
             <td>{paciente.data_nascimento}</td>
           </tr>
           <tr>
-            <td className="font-bold">Gênero</td>
+            <TdLabel>Gênero</TdLabel>
             <td>{paciente.genero}</td>
-            <td className="font-bold">E-mail</td>
+            <TdLabel>E-mail</TdLabel>
             <td>{paciente.email}</td>
-            <td className="font-bold">Telefone</td>
+            <TdLabel>Telefone</TdLabel>
             <td>{paciente.telefone}</td>
           </tr>
           <tr>
-            <td className="font-bold">CEP</td>
+            <TdLabel>CEP</TdLabel>
             <td>{paciente.endereco.cep}</td>
-            <td className="font-bold">Rua</td>
+            <TdLabel>Rua</TdLabel>
             <td>{paciente.endereco.rua}</td>
-            <td className="font-bold">N°</td>
+            <TdLabel>N°</TdLabel>
             <td>{paciente.endereco.numero}</td>
           </tr>
           <tr>
-            <td className="font-bold">Cidade</td>
+            <TdLabel>Cidade</TdLabel>
             <td>{paciente.endereco.cidade}</td>
-            <td className="font-bold">Estado</td>
+            <TdLabel>Estado</TdLabel>
             <td>{paciente.endereco.estado}</td>
-            <td className="font-bold">Bairro</td>
+            <TdLabel>Bairro</TdLabel>
             <td>{paciente.endereco.bairro}</td>
           </tr>
         </table>
