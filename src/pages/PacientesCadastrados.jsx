@@ -5,6 +5,7 @@ import Conteudo from "../components/Conteudo";
 import Li from "../components/Li";
 import PacientesBotao from "../components/PacientesBotao";
 import { useNavigate } from "react-router-dom";
+import Title from "../components/Title";
 
 function PacientesCadastrados() {
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ function PacientesCadastrados() {
   return (
     <Background>
       <Conteudo>
+        <Title>Pacientes</Title>
         <ul className="grid grid-cols-1 space-y-2">
           <Li>
             <PacientesBotao className=" w-1/12 font-bold">ID</PacientesBotao>

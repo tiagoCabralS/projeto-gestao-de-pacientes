@@ -6,6 +6,7 @@ import TdInfo from "../components/TdInfo";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
+import Title from "../components/Title";
 
 function DetalhesPaciente() {
   const navigate = useNavigate();
@@ -36,9 +37,7 @@ function DetalhesPaciente() {
   return (
     <Background>
       <Conteudo>
-        <h1 className="text-4xl uppercase text-center shadow rounded-md bg-olive-500 p-2">
-          Informações do Paciente {paciente.id}
-        </h1>
+        <Title>Informações do Paciente {paciente.id}</Title>
         <table className="w-full">
           <tr>
             <TdLabel>CPF</TdLabel>

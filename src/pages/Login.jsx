@@ -8,6 +8,7 @@ import Formulario from "../components/Formulario";
 import Botao from "../components/Botao";
 import Input from "../components/Input";
 import Label from "../components/Label";
+import Title from "../components/Title";
 
 function Login() {
     const navigate = useNavigate()
@@ -34,9 +35,7 @@ function Login() {
   return (
     <Background>
       <Conteudo>
-        <div className="flex justify-center">
-          <h1 className="text-2xl">Login</h1>
-        </div>
+        <Title>Login</Title>
         <div className="">
           <Formulario onSubmit={handleSubmit}>
             <Label htmlFor="username">Username:</Label>
