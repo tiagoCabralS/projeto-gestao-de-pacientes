@@ -6,8 +6,10 @@ import Li from "../components/Li";
 import PacientesBotao from "../components/PacientesBotao";
 import { useNavigate } from "react-router-dom";
 import Title from "../components/Title";
+import { validarUsuario } from "../context/Validacao";
 
 function PacientesCadastrados() {
+  validarUsuario()
   const navigate = useNavigate()
   const [pacientesCadastrados, setPacientesCadastrados] = useState([]);
 
