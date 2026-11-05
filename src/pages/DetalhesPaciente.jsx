@@ -87,16 +87,16 @@ function DetalhesPaciente() {
           <Botao className="bg-blue-900" onClick={() => navigate(-1)}>
             Editar Informações
           </Botao>
-          <Botao className="bg-red-900" onClick={() => setDeleteModalOpen(true)}>
+          <Botao className="bg-red-900" onClick={() => {setDeleteModalOpen(true)}}>
             Apagar Paciente
           </Botao>
         </div>
       </Conteudo>
       <ConfirmModal 
         isOpen={isDeleteModalOpen}
-        message={`Confirma apagar paciente ${paciente.nome} com id ${paciente.id}`}
+        message={`Deseja apagar paciente ${paciente.nome} com id ${paciente.id}?`}
         title={"Confirmar apagamento de paciente"}
-        onCancel={() => setDeleteModalOpen(false)}
+        onCancel={() => {setDeleteModalOpen(false)}}
         onConfirm={() => handleDeletarPaciente(id)}
       />
     </Background>
