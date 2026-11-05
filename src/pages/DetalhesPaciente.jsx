@@ -7,8 +7,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
 import Title from "../components/Title";
+import { validarUsuario } from "../context/Validacao";
 
 function DetalhesPaciente() {
+  validarUsuario()
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
