@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
 import Title from "../components/Title";
 import { validarUsuario } from "../context/Validacao";
+import ConfirmModal from "../components/ConfirmModal";
 
 function DetalhesPaciente() {
   validarUsuario()
@@ -16,6 +17,7 @@ function DetalhesPaciente() {
   const id = searchParams.get("id");
   const [paciente, setPaciente] = useState();
   const [loading, setLoading] = useState(true);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -34,6 +36,12 @@ function DetalhesPaciente() {
         <h1>Carregando página...</h1>
       </div>
     );
+  }
+
+  function handleDeletarPaciente(id){
+    axios.post(`http://localhost:3000/paciente/${id}/delete`)
+    console.log(`Paciente ${id} apagado com sucesso!`)
+    navigate(-1)
   }
 
   return (
@@ -76,14 +84,21 @@ function DetalhesPaciente() {
         </table>
         <div className="flex justify-between space-x-2">
           <Botao onClick={() => navigate(-1)}>Página Inicial</Botao>
-          <Botao className="bg-blue-800" onClick={() => navigate(-1)}>
+          <Botao className="bg-blue-900" onClick={() => navigate(-1)}>
             Editar Informações
           </Botao>
-          <Botao className="bg-red-800" onClick={() => navigate(-1)}>
+          <Botao className="bg-red-900" onClick={() => setDeleteModalOpen(true)}>
             Apagar Paciente
           </Botao>
         </div>
       </Conteudo>
+      <ConfirmModal 
+        isOpen={isDeleteModalOpen}
+        message={`Confirma apagar paciente ${paciente.nome} com id ${paciente.id}`}
+        title={"Confirmar apagamento de paciente"}
+        onCancel={() => setDeleteModalOpen(false)}
+        onConfirm={() => handleDeletarPaciente(id)}
+      />
     </Background>
   );
 }
