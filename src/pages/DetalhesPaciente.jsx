@@ -83,7 +83,7 @@ function DetalhesPaciente() {
           </tr>
         </table>
         <div className="flex justify-between space-x-2">
-          <Botao onClick={() => navigate(-1)}>Página Inicial</Botao>
+          <Botao onClick={() => navigate(-1)}>Voltar</Botao>
           <Botao className="bg-blue-900" onClick={() => navigate(-1)}>
             Editar Informações
           </Botao>
