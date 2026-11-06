@@ -7,6 +7,7 @@ import PacientesBotao from "../components/PacientesBotao";
 import { useNavigate } from "react-router-dom";
 import Title from "../components/Title";
 import { validarUsuario } from "../context/Validacao";
+import Botao from "../components/Botao";
 
 function PacientesCadastrados() {
   validarUsuario()
@@ -19,6 +20,10 @@ function PacientesCadastrados() {
     navigate(`/pacientes/detalhes?${query.toString()}`)
   }
 
+  function handleCadastrarPaciente(){
+    navigate("/pacientes/cadastro")
+  }
+
   useEffect(() => {
     axios.get("http://localhost:3000/paciente/all").then(({ data }) => {
       setPacientesCadastrados(data);
@@ -28,13 +33,16 @@ function PacientesCadastrados() {
   return (
     <Background>
       <Conteudo>
-        <Title>Pacientes</Title>
+        <Title className="">Pacientes</Title>
+        <div className="w-full flex justify-center space-x-2">
+          <Botao onClick={handleCadastrarPaciente}>Novo Paciente</Botao>
+        </div>
         <ul className="grid grid-cols-1 space-y-2">
           <Li>
             <PacientesBotao className=" w-1/12 font-bold">ID</PacientesBotao>
             <PacientesBotao className=" w-full text-left font-bold">Nome</PacientesBotao>
             <PacientesBotao className=" w-1/4 font-bold">Telefone</PacientesBotao>
-            <PacientesBotao className=" w-1/12"></PacientesBotao>
+            <Botao className=" w-1/12"></Botao>
           </Li>
           {pacientesCadastrados.map((paciente) => (
             <Li key={paciente.id}>
@@ -47,11 +55,11 @@ function PacientesCadastrados() {
               <PacientesBotao className=" font-bold w-1/4 text-left">
                 {paciente.telefone}
               </PacientesBotao>
-              <PacientesBotao 
+              <Botao 
               onClick={() => {verDetalhes(paciente.id)}} 
               className=" font-bold w-1/12">
                 {'>'}
-              </PacientesBotao>
+              </Botao>
             </Li>
           ))}
         </ul>
