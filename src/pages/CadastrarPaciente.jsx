@@ -53,6 +53,8 @@ function CadastrarPaciente(props){
                 </div>
                 <div className="flex flex-col">
                     <h3 className="text-2xl text-center font-bold uppercase">Informações Clínicas</h3>
+                    <Label htmlFor="sexo">Sexo:</Label>
+                    <Input type="text" id="sexo" name="sexo"/>
                     <Label htmlFor="tipoSanguineo">Tipo Sanguíneo:</Label>
                     <Input type="text" id="tipoSanguineo" name="tipoSanguineo"/>
                     <Label htmlFor="alergias">Alergias:</Label>
