@@ -301,8 +301,8 @@ function CadastrarPaciente(props) {
     "TO",
   ];
 
-  function handleAlergiaSelecao(nomeTecnico){
-    setAlergias((estadoAnterior) => {
+  function handleSelecaoCheckbox(nomeTecnico, setState){
+    setState((estadoAnterior) => {
       if (estadoAnterior.includes(nomeTecnico)){
         // se já esta marcado filtra para remover
         return estadoAnterior.filter((valor) => valor !== nomeTecnico)
@@ -478,7 +478,7 @@ function CadastrarPaciente(props) {
                       type="checkbox"
                       value={alergia.nomeTecnico}
                       checked={alergias.includes(alergia.nomeTecnico)}
-                      onChange={() => handleAlergiaSelecao(alergia.nomeTecnico)}
+                      onChange={() => handleSelecaoCheckbox(alergia.nomeTecnico, setAlergias)}
                     />
                     {alergia.nomeTecnico} | {alergia.sinonimos[0]}
                   </Label>
@@ -494,7 +494,7 @@ function CadastrarPaciente(props) {
                       type="checkbox"
                       value={comorbidade.nomeTecnico}
                       checked={alergias.includes(comorbidade.nomeTecnico)}
-                      onChange={() => handleComorbidadeSelecao(comorbidade.nomeTecnico)}
+                      onChange={() => handleSelecaoCheckbox(comorbidade.nomeTecnico, setComorbidades)}
                     />
                     {comorbidade.nomeTecnico} | {comorbidade.sinonimos[0]}
                   </Label>
