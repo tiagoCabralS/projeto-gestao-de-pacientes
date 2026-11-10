@@ -545,5 +545,3 @@ function CadastrarPaciente(props) {
 }
 
 export default CadastrarPaciente;
-
-// {"id":1,"nome":"Tiago","data_nascimento":"2007-08-13","genero":"M","cpf":"67676767676","telefone":"13676767676","email":"yuri@email.com","endereco":{"cep":"11111111","rua":"Rua Das Águas","numero":"69","bairro":"Joinvile","cidade":"Pindamonhangaba","estado":"Acre"},"tipoSanguineo":"O+","alergias":[],"comorbidades":[],"peso":80.5,"altura":2.67}
