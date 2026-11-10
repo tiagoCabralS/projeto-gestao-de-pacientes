@@ -85,7 +85,7 @@ function DetalhesPaciente() {
           </tbody>
         </table>
         <div className="flex justify-between space-x-2">
-          <Botao onClick={() => navigate(-1)}>Voltar</Botao>
+          <Botao onClick={() => navigate("/pacientes/")}>Voltar</Botao>
           <Botao className="bg-blue-900" onClick={() => navigate(-1)}>
             Editar Informações
           </Botao>
