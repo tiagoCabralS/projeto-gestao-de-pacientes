@@ -14,6 +14,7 @@ function CadastrarPaciente(props) {
   validarUsuario();
 
   const [nome, setNome] = useState();
+  const [cpf, setCPF] = useState();
   const [data_nascimento, setData_nascimento] = useState();
   const [genero, setGenero] = useState();
   const [telefone, setTelefone] = useState();
@@ -314,9 +315,17 @@ function CadastrarPaciente(props) {
     })
   }
 
-  function handleCadastro(e) {
+  async function handleCadastro(e) {
     e.preventDefault();
-  }
+    try{
+      await axios.post("http://localhost:3000/paciente/create", {
+          nome, cpf, data_nascimento, genero, telefone, email, cep, rua, numero, bairro, cidade, estado, sexo, tipoSanguineo, alergias, comorbidades, peso, altura
+        }).then((response) => {
+          navigate(`/pacientes/detalhes/?id=${response.data.id}/`)
+        })
+    }catch(error){
+    console.log(error)
+  }}
 
   const navigate = useNavigate();
 
@@ -324,7 +333,7 @@ function CadastrarPaciente(props) {
     <Background className="h-fit">
       <Conteudo>
         <Title>Novo Paciente</Title>
-        <Formulario className="space-y-4">
+        <Formulario onSubmit={handleCadastro} method="POST" className="space-y-4">
           <div className="flex flex-col">
             <h3 className="text-2xl text-center font-bold uppercase">
               Dados Pessoais e de Contato
@@ -335,6 +344,14 @@ function CadastrarPaciente(props) {
               type="text"
               id="nome"
               name="nome"
+              required
+            />
+            <Label htmlFor="cpf">CPF:</Label>
+            <Input
+              onChange={(e) => setCPF(e.target.value)}
+              type="text"
+              id="cpf"
+              name="cpf"
               required
             />
             <Label htmlFor="data_nascimento">Data de Nascimento:</Label>
@@ -493,7 +510,7 @@ function CadastrarPaciente(props) {
                     <input
                       type="checkbox"
                       value={comorbidade.nomeTecnico}
-                      checked={alergias.includes(comorbidade.nomeTecnico)}
+                      checked={comorbidades.includes(comorbidade.nomeTecnico)}
                       onChange={() => handleSelecaoCheckbox(comorbidade.nomeTecnico, setComorbidades)}
                     />
                     {comorbidade.nomeTecnico} | {comorbidade.sinonimos[0]}
