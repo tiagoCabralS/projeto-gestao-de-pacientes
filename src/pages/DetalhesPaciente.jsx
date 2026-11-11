@@ -12,7 +12,7 @@ import { validarUsuario } from "../context/Validacao";
 import ConfirmModal from "../components/ConfirmModal";
 
 function DetalhesPaciente() {
-  validarUsuario()
+  validarUsuario();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
@@ -39,10 +39,10 @@ function DetalhesPaciente() {
     );
   }
 
-  function handleDeletarPaciente(id){
-    axios.post(`http://localhost:3000/paciente/${id}/delete`)
-    console.log(`Paciente ${id} apagado com sucesso!`)
-    navigate(-1)
+  function handleDeletarPaciente(id) {
+    axios.post(`http://localhost:3000/paciente/${id}/delete`);
+    console.log(`Paciente ${id} apagado com sucesso!`);
+    navigate(-1);
   }
 
   return (
@@ -98,19 +98,15 @@ function DetalhesPaciente() {
             <tr>
               <TdLabel>Alergias</TdLabel>
               <ul>
-              {
-                paciente.alergias.map((alergia) => (
+                {paciente.alergias.map((alergia) => (
                   <Li>{alergia}</Li>
-                ))
-              }
+                ))}
               </ul>
               <TdLabel>Comorbidades</TdLabel>
               <ul>
-              {
-                paciente.comorbidades.map((comorbidade) => (
+                {paciente.comorbidades.map((comorbidade) => (
                   <Li>{comorbidade}</Li>
-                ))
-              }
+                ))}
               </ul>
             </tr>
           </tbody>
@@ -120,16 +116,23 @@ function DetalhesPaciente() {
           <Botao className="bg-blue-900" onClick={() => navigate(-1)}>
             Editar Informações
           </Botao>
-          <Botao className="bg-red-900" onClick={() => {setDeleteModalOpen(true)}}>
+          <Botao
+            className="bg-red-900"
+            onClick={() => {
+              setDeleteModalOpen(true);
+            }}
+          >
             Apagar Paciente
           </Botao>
         </div>
       </Conteudo>
-      <ConfirmModal 
+      <ConfirmModal
         isOpen={isDeleteModalOpen}
         message={`Deseja apagar paciente ${paciente.nome} com id ${paciente.id}?`}
         title={"Confirmar apagamento de paciente"}
-        onCancel={() => {setDeleteModalOpen(false)}}
+        onCancel={() => {
+          setDeleteModalOpen(false);
+        }}
         onConfirm={() => handleDeletarPaciente(id)}
       />
     </Background>
