@@ -9,6 +9,7 @@ import Title from "../components/Title";
 import Label from "../components/Label";
 import Botao from "../components/Botao";
 import axios from "axios";
+import Select from "../components/Select";
 
 function CadastrarPaciente(props) {
   validarUsuario();
@@ -302,30 +303,49 @@ function CadastrarPaciente(props) {
     "TO",
   ];
 
-  function handleSelecaoCheckbox(nomeTecnico, setState){
+  function handleSelecaoCheckbox(nomeTecnico, setState) {
     setState((estadoAnterior) => {
-      if (estadoAnterior.includes(nomeTecnico)){
+      if (estadoAnterior.includes(nomeTecnico)) {
         // se já esta marcado filtra para remover
-        return estadoAnterior.filter((valor) => valor !== nomeTecnico)
-      }
-      else {
+        return estadoAnterior.filter((valor) => valor !== nomeTecnico);
+      } else {
         // se não está marcado adiciona ao final do array
-        return [...estadoAnterior, nomeTecnico]
+        return [...estadoAnterior, nomeTecnico];
       }
-    })
+    });
   }
 
   async function handleCadastro(e) {
     e.preventDefault();
-    try{
-      await axios.post("http://localhost:3000/paciente/create", {
-          nome, cpf, data_nascimento, genero, telefone, email, cep, rua, numero, bairro, cidade, estado, sexo, tipoSanguineo, alergias, comorbidades, peso, altura
-        }).then((response) => {
-          navigate(`/pacientes/detalhes/?id=${response.data.id}/`)
+    try {
+      await axios
+        .post("http://localhost:3000/paciente/create", {
+          nome,
+          cpf,
+          data_nascimento,
+          genero,
+          telefone,
+          email,
+          cep,
+          rua,
+          numero,
+          bairro,
+          cidade,
+          estado,
+          sexo,
+          tipoSanguineo,
+          alergias,
+          comorbidades,
+          peso,
+          altura,
         })
-    }catch(error){
-    console.log(error)
-  }}
+        .then((response) => {
+          navigate(`/pacientes/detalhes/?id=${response.data.id}/`);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const navigate = useNavigate();
 
@@ -333,7 +353,11 @@ function CadastrarPaciente(props) {
     <Background className="h-fit">
       <Conteudo>
         <Title>Novo Paciente</Title>
-        <Formulario onSubmit={handleCadastro} method="POST" className="space-y-4">
+        <Formulario
+          onSubmit={handleCadastro}
+          method="POST"
+          className="space-y-4"
+        >
           <div className="flex flex-col">
             <h3 className="text-2xl text-center font-bold uppercase">
               Dados Pessoais e de Contato
@@ -363,8 +387,7 @@ function CadastrarPaciente(props) {
               required
             />
             <Label htmlFor="genero">Gênero:</Label>
-            <select
-              className="bg-white p-2 rounded-md"
+            <Select
               onChange={(e) => setGenero(e.target.value)}
               id="genero"
               name="genero"
@@ -376,7 +399,7 @@ function CadastrarPaciente(props) {
               <option value="prefire_nao_responder">
                 Prefiro não responder
               </option>
-            </select>
+            </Select>
             <Label htmlFor="telefone">Telefone:</Label>
             <Input
               onChange={(e) => setTelefone(e.target.value)}
@@ -439,8 +462,7 @@ function CadastrarPaciente(props) {
               required
             />
             <Label htmlFor="estado">Estado:</Label>
-            <select
-              className="bg-white p-2 rounded-md"
+            <Select
               name="estado"
               id="estado"
               onChange={(e) => setEstado(e.target.value)}
@@ -451,15 +473,14 @@ function CadastrarPaciente(props) {
                   {estado}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
           <div className="flex flex-col">
             <h3 className="text-2xl text-center font-bold uppercase">
               Informações Clínicas
             </h3>
             <Label htmlFor="sexo">Sexo:</Label>
-            <select
-              className="bg-white p-2 rounded-md"
+            <Select
               onChange={(e) => setSexo(e.target.value)}
               type="text"
               name="sexo"
@@ -468,10 +489,9 @@ function CadastrarPaciente(props) {
             >
               <option value="masculino">Masculino</option>
               <option value="feminino">Feminino</option>
-            </select>
+            </Select>
             <Label htmlFor="tipoSanguineo">Tipo Sanguíneo:</Label>
-            <select
-              className="bg-white p-2 rounded-md"
+            <Select
               onChange={(e) => setTipoSanguineo(e.target.value)}
               id="tipoSanguineo"
               name="tipoSanguineo"
@@ -485,38 +505,41 @@ function CadastrarPaciente(props) {
               <option value="AB-">AB-</option>
               <option value="O+">O+</option>
               <option value="O-">O-</option>
-            </select>
+            </Select>
             <Label htmlFor="alergias">Alergias:</Label>
             <div className="grid grid-cols-2 gap-2">
-              {
-                listaAlergias.map(alergia => (
-                  <Label className="bg-white p-2 rounded-md">
-                    <input
-                      type="checkbox"
-                      value={alergia.nomeTecnico}
-                      checked={alergias.includes(alergia.nomeTecnico)}
-                      onChange={() => handleSelecaoCheckbox(alergia.nomeTecnico, setAlergias)}
-                    />
-                    {alergia.nomeTecnico} | {alergia.sinonimos[0]}
-                  </Label>
-                ))
-              }
+              {listaAlergias.map((alergia) => (
+                <Label className="bg-white p-2 rounded-md">
+                  <input
+                    type="checkbox"
+                    value={alergia.nomeTecnico}
+                    checked={alergias.includes(alergia.nomeTecnico)}
+                    onChange={() =>
+                      handleSelecaoCheckbox(alergia.nomeTecnico, setAlergias)
+                    }
+                  />
+                  {alergia.nomeTecnico} | {alergia.sinonimos[0]}
+                </Label>
+              ))}
             </div>
             <Label htmlFor="comorbidades">Comorbidades:</Label>
             <div className="grid grid-cols-2 gap-2">
-              {
-                listaComorbidades.map(comorbidade => (
-                  <Label className="bg-white p-2 rounded-md">
-                    <input
-                      type="checkbox"
-                      value={comorbidade.nomeTecnico}
-                      checked={comorbidades.includes(comorbidade.nomeTecnico)}
-                      onChange={() => handleSelecaoCheckbox(comorbidade.nomeTecnico, setComorbidades)}
-                    />
-                    {comorbidade.nomeTecnico} | {comorbidade.sinonimos[0]}
-                  </Label>
-                ))
-              }
+              {listaComorbidades.map((comorbidade) => (
+                <Label className="bg-white p-2 rounded-md">
+                  <input
+                    type="checkbox"
+                    value={comorbidade.nomeTecnico}
+                    checked={comorbidades.includes(comorbidade.nomeTecnico)}
+                    onChange={() =>
+                      handleSelecaoCheckbox(
+                        comorbidade.nomeTecnico,
+                        setComorbidades,
+                      )
+                    }
+                  />
+                  {comorbidade.nomeTecnico} | {comorbidade.sinonimos[0]}
+                </Label>
+              ))}
             </div>
             <Label htmlFor="peso">Peso (Kg):</Label>
             <Input
