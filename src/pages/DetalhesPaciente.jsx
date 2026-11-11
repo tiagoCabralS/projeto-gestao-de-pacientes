@@ -82,6 +82,10 @@ function DetalhesPaciente() {
               <TdLabel>Bairro</TdLabel>
               <TdInfo>{paciente.endereco.bairro}</TdInfo>
             </tr>
+            <tr>
+              <TdLabel>Sexo</TdLabel>
+              <TdInfo>{paciente.sexo}</TdInfo>
+            </tr>
           </tbody>
         </table>
         <div className="flex justify-between space-x-2">
