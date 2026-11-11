@@ -3,6 +3,7 @@ import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import TdLabel from "../components/TdLabel";
 import TdInfo from "../components/TdInfo";
+import Li from "../components/Li";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
@@ -85,6 +86,32 @@ function DetalhesPaciente() {
             <tr>
               <TdLabel>Sexo</TdLabel>
               <TdInfo>{paciente.sexo}</TdInfo>
+              <TdLabel>Tipo Sanguíneo</TdLabel>
+              <TdInfo>{paciente.tipoSanguineo}</TdInfo>
+              <TdLabel>Peso</TdLabel>
+              <TdInfo>{paciente.peso}Kg</TdInfo>
+            </tr>
+            <tr>
+              <TdLabel>Altura</TdLabel>
+              <TdInfo>{paciente.altura}m</TdInfo>
+            </tr>
+            <tr>
+              <TdLabel>Alergias</TdLabel>
+              <ul>
+              {
+                paciente.alergias.map((alergia) => (
+                  <Li>{alergia}</Li>
+                ))
+              }
+              </ul>
+              <TdLabel>Comorbidades</TdLabel>
+              <ul>
+              {
+                paciente.comorbidades.map((comorbidade) => (
+                  <Li>{comorbidade}</Li>
+                ))
+              }
+              </ul>
             </tr>
           </tbody>
         </table>
