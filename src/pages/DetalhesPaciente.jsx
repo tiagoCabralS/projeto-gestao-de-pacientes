@@ -93,7 +93,7 @@ function DetalhesPaciente() {
             </tr>
             <tr>
               <TdLabel>Altura</TdLabel>
-              <TdInfo>{paciente.altura}m</TdInfo>
+              <TdInfo>{paciente.altura}cm</TdInfo>
             </tr>
             <tr>
               <TdLabel>Alergias</TdLabel>
