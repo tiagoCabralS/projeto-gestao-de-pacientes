@@ -17,7 +17,7 @@ function CadastrarPaciente(props) {
   const [nome, setNome] = useState();
   const [cpf, setCPF] = useState();
   const [data_nascimento, setData_nascimento] = useState();
-  const [genero, setGenero] = useState();
+  const [genero, setGenero] = useState("Homem");
   const [telefone, setTelefone] = useState();
   const [email, setEmail] = useState();
   const [cep, setCEP] = useState();
@@ -25,9 +25,9 @@ function CadastrarPaciente(props) {
   const [numero, setNumero] = useState();
   const [bairro, setBairro] = useState();
   const [cidade, setCidade] = useState();
-  const [estado, setEstado] = useState();
-  const [sexo, setSexo] = useState();
-  const [tipoSanguineo, setTipoSanguineo] = useState();
+  const [estado, setEstado] = useState("AC");
+  const [sexo, setSexo] = useState("M");
+  const [tipoSanguineo, setTipoSanguineo] = useState("A+");
   const [alergias, setAlergias] = useState([]);
   const [comorbidades, setComorbidades] = useState([]);
   const [peso, setPeso] = useState();
@@ -487,8 +487,8 @@ function CadastrarPaciente(props) {
               id="sexo"
               required
             >
-              <option value="masculino">Masculino</option>
-              <option value="feminino">Feminino</option>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
             </Select>
             <Label htmlFor="tipoSanguineo">Tipo Sanguíneo:</Label>
             <Select
