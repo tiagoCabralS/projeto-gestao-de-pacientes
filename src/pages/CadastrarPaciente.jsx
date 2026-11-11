@@ -512,13 +512,13 @@ function CadastrarPaciente(props) {
                 <Label className="bg-white p-2 rounded-md">
                   <input
                     type="checkbox"
-                    value={alergia.nomeTecnico}
-                    checked={alergias.includes(alergia.nomeTecnico)}
+                    value={alergia.labelCurta}
+                    checked={alergias.includes(alergia.labelCurta)}
                     onChange={() =>
-                      handleSelecaoCheckbox(alergia.nomeTecnico, setAlergias)
+                      handleSelecaoCheckbox(alergia.labelCurta, setAlergias)
                     }
                   />
-                  {alergia.nomeTecnico} | {alergia.sinonimos[0]}
+                  {alergia.labelCurta} | {alergia.sinonimos[0]}
                 </Label>
               ))}
             </div>
@@ -528,16 +528,16 @@ function CadastrarPaciente(props) {
                 <Label className="bg-white p-2 rounded-md">
                   <input
                     type="checkbox"
-                    value={comorbidade.nomeTecnico}
-                    checked={comorbidades.includes(comorbidade.nomeTecnico)}
+                    value={comorbidade.labelCurta}
+                    checked={comorbidades.includes(comorbidade.labelCurta)}
                     onChange={() =>
                       handleSelecaoCheckbox(
-                        comorbidade.nomeTecnico,
+                        comorbidade.labelCurta,
                         setComorbidades,
                       )
                     }
                   />
-                  {comorbidade.nomeTecnico} | {comorbidade.sinonimos[0]}
+                  {comorbidade.labelCurta} | {comorbidade.sinonimos[0]}
                 </Label>
               ))}
             </div>
