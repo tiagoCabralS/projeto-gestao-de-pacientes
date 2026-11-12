@@ -45,6 +45,12 @@ function DetalhesPaciente() {
     navigate(-1);
   }
 
+  function handleEditClick(id){
+    const query = new URLSearchParams()
+    query.set("id", id)
+    navigate(`/pacientes/edit?${query.toString()}`)
+  }
+
   return (
     <Background>
       <Conteudo>
@@ -113,7 +119,7 @@ function DetalhesPaciente() {
         </table>
         <div className="flex justify-between space-x-2">
           <Botao onClick={() => navigate("/pacientes/")}>Voltar</Botao>
-          <Botao className="bg-blue-900" onClick={() => navigate(-1)}>
+          <Botao className="bg-blue-900" onClick={() => handleEditClick(paciente.id)}>
             Editar Informações
           </Botao>
           <Botao
