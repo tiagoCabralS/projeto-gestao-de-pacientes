@@ -351,6 +351,10 @@ function CadastrarPaciente(props) {
 
   return (
     <Background className="h-fit">
+      <div className="fixed bg-olive-300 p-4 rounded-md left-0 top-0 m-2 flex flex-col gap-2">
+        <Botao onClick={() => navigate("/pacientes")}>Página Inicial</Botao> 
+        <Botao onClick={() => navigate("/pacientes")}>Limpar Formulário</Botao>
+      </div>
       <Conteudo>
         <Title>Novo Paciente</Title>
         <Formulario
