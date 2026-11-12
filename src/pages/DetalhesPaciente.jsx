@@ -3,13 +3,13 @@ import Background from "../components/Background";
 import Conteudo from "../components/Conteudo";
 import TdLabel from "../components/TdLabel";
 import TdInfo from "../components/TdInfo";
-import Li from "../components/Li";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Botao from "../components/Botao";
 import Title from "../components/Title";
 import { validarUsuario } from "../context/Validacao";
 import ConfirmModal from "../components/ConfirmModal";
+import normalizarLista from "../utils/normalizarLista";
 
 function DetalhesPaciente() {
   validarUsuario();
@@ -38,6 +38,9 @@ function DetalhesPaciente() {
       </div>
     );
   }
+
+  const alergias = normalizarLista(paciente.alergias);
+  const comorbidades = normalizarLista(paciente.comorbidades);
 
   function handleDeletarPaciente(id) {
     axios.post(`http://localhost:3000/paciente/${id}/delete`);
@@ -100,20 +103,33 @@ function DetalhesPaciente() {
             <tr>
               <TdLabel>Altura</TdLabel>
               <TdInfo>{paciente.altura}cm</TdInfo>
+              <td colSpan={4}></td>
             </tr>
             <tr>
               <TdLabel>Alergias</TdLabel>
-              <ul>
-                {paciente.alergias.map((alergia) => (
-                  <Li>{alergia}</Li>
-                ))}
-              </ul>
+              <td colSpan={2}>
+                {alergias.length > 0 ? (
+                  <ul className="list-none space-y-1">
+                    {alergias.map((alergia) => (
+                      <li key={alergia}>{alergia}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  "Nenhuma informada"
+                )}
+              </td>
               <TdLabel>Comorbidades</TdLabel>
-              <ul>
-                {paciente.comorbidades.map((comorbidade) => (
-                  <Li>{comorbidade}</Li>
-                ))}
-              </ul>
+              <td colSpan={2}>
+                {comorbidades.length > 0 ? (
+                  <ul className="list-none space-y-1">
+                    {comorbidades.map((comorbidade) => (
+                      <li key={comorbidade}>{comorbidade}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  "Nenhuma informada"
+                )}
+              </td>
             </tr>
           </tbody>
         </table>
