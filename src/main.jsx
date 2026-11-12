@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx'
 import PacientesCadastrados from './pages/PacientesCadastrados.jsx'
 import DetalhesPaciente from './pages/DetalhesPaciente.jsx'
 import CadastrarPaciente from './pages/CadastrarPaciente.jsx'
+import EditarPaciente from './pages/EditarPaciente.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/pacientes/cadastro",
     element: <CadastrarPaciente/>
+  },
+  {
+    path: "/pacientes/edit",
+    element: <EditarPaciente/>
   }
 ])
 
